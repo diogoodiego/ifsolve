@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  ifsolve:
+    image: diogoodiego/ifsolve-frontend-react
+    ports:
+      - "4173:4173"
+    environment:
+      - VITE_API_URL=https://ifsolveback.azurewebsites.net/
