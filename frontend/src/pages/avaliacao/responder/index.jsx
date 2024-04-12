@@ -83,8 +83,7 @@ export default function AvaliacaoResponder(props) {
                             <p>{avaliacao.avaliacao.descricao}</p>
                         </Container>
 
-                        {avaliacao.itens &&
-                            avaliacao.itens.map((item, i) => (
+                        {avaliacao?.itens.map((item, i) => (
                                 <ItemForm item={item} i={i} key={i} respostas={respostas} />
                             ))}
                     </>
