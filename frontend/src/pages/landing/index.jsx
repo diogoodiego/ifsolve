@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Link as LinkScroll, animateScroll as scroll } from 'react-scroll';
+import { Link as LinkScroll } from 'react-scroll';
 import {
     FiAlignLeft,
     FiArrowRight,
