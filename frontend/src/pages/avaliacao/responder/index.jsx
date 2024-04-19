@@ -84,8 +84,8 @@ export default function AvaliacaoResponder(props) {
                         </Container>
 
                         {avaliacao?.itens.map((item, i) => (
-                                <ItemForm item={item} i={i} key={i} respostas={respostas} />
-                            ))}
+                            <ItemForm item={item} i={i} key={i} respostas={respostas} />
+                        ))}
                     </>
                 ) : null}
                 <div className="flex flex-row gap-4">
