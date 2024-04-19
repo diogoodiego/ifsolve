@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 /* jscpd:ignore-start */
 
@@ -7,31 +7,31 @@ export const api = axios.create({
 });
 
 export function loginApi(data) {
-    return api.post("auth/suap/auth_register/", {
+    return api.post('auth/suap/auth_register/', {
         username: data.login,
         password: data.password,
     });
 }
 
 export function Logout() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api
-        .get("auth/logout/", {
+        .get('auth/logout/', {
             headers: {
                 Authorization: `Token ${token}`,
             },
         })
         .then(() => {
-            localStorage.removeItem("ifsolve_token");
-            localStorage.removeItem("ifsolve_user");
+            localStorage.removeItem('ifsolve_token');
+            localStorage.removeItem('ifsolve_user');
         });
 }
 
 export function GetUser() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("auth/user/", {
+    return api.get('auth/user/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -39,12 +39,12 @@ export function GetUser() {
 }
 
 export function ElaboradorRegister(data) {
-    return api.post("elaborador/cadastro/", {
+    return api.post('elaborador/cadastro/', {
         nome_completo: data.nome_completo,
         username: data.username,
         password: data.password,
-        first_name: "string",
-        last_name: "string",
+        first_name: 'string',
+        last_name: 'string',
         email: data.email,
         data_nascimento: data.data_nascimento,
         verificado: true,
@@ -52,25 +52,25 @@ export function ElaboradorRegister(data) {
 }
 
 export function AlunoRegister(data) {
-    return api.post("aluno/cadastro/", {
+    return api.post('aluno/cadastro/', {
         nome_completo: data.nome_completo,
         username: data.username,
         password: data.password,
-        first_name: "string",
-        last_name: "string",
+        first_name: 'string',
+        last_name: 'string',
         email: data.email,
         data_nascimento: data.data_nascimento,
     });
 }
 
 export function PostItemDI(data) {
-    const user = JSON.parse(localStorage.getItem("ifsolve_user"));
+    const user = JSON.parse(localStorage.getItem('ifsolve_user'));
 
     return api.post(
-        "item/criar/",
+        'item/criar/',
         {
             titulo: data.titulo,
-            texto_base: "",
+            texto_base: '',
             tipo: data.tipo,
             assunto: data.assunto,
             tags: data.tags,
@@ -78,25 +78,25 @@ export function PostItemDI(data) {
             elaborador: user.id,
             enunciado: data.enunciado,
             area: data.area,
-            visibilidade: "PU",
+            visibilidade: 'PU',
             data_publicacao: new Date().toJSON(),
         },
         {
             headers: {
-                Authorization: `Token ${localStorage.getItem("ifsolve_token")}`,
+                Authorization: `Token ${localStorage.getItem('ifsolve_token')}`,
             },
         }
     );
 }
 
 export function PostItemME(data) {
-    const user = JSON.parse(localStorage.getItem("ifsolve_user"));
+    const user = JSON.parse(localStorage.getItem('ifsolve_user'));
 
     return api.post(
-        "item/criar/",
+        'item/criar/',
         {
             titulo: data.titulo,
-            texto_base: "",
+            texto_base: '',
             tipo: data.tipo,
             assunto: data.assunto,
             tags: data.tags,
@@ -104,7 +104,7 @@ export function PostItemME(data) {
             elaborador: user.id,
             enunciado: data.enunciado,
             area: data.area,
-            visibilidade: "PU",
+            visibilidade: 'PU',
             data_publicacao: new Date().toJSON(),
             alternativa_a: {
                 texto: data.alternativas[0].texto,
@@ -115,44 +115,32 @@ export function PostItemME(data) {
                 justificativa: data.alternativas[1].justificativa,
             },
             alternativa_c: {
-                texto: data.alternativas[2] ? data.alternativas[2].texto : " ",
-                justificativa: data.alternativas[2]
-                    ? data.alternativas[2].justificativa
-                    : " ",
+                texto: data.alternativas[2] ? data.alternativas[2].texto : ' ',
+                justificativa: data.alternativas[2] ? data.alternativas[2].justificativa : ' ',
             },
             alternativa_d: {
-                texto:
-                    data.alternativas[3] === undefined
-                        ? " "
-                        : data.alternativas[3].texto,
+                texto: data.alternativas[3] === undefined ? ' ' : data.alternativas[3].texto,
                 justificativa:
-                    data.alternativas[3] === undefined
-                        ? " "
-                        : data.alternativas[3].justificativa,
+                    data.alternativas[3] === undefined ? ' ' : data.alternativas[3].justificativa,
             },
             alternativa_e: {
-                texto:
-                    data.alternativas[4] === undefined
-                        ? " "
-                        : data.alternativas[4].texto,
+                texto: data.alternativas[4] === undefined ? ' ' : data.alternativas[4].texto,
                 justificativa:
-                    data.alternativas[4] === undefined
-                        ? " "
-                        : data.alternativas[4].justificativa,
+                    data.alternativas[4] === undefined ? ' ' : data.alternativas[4].justificativa,
             },
         },
         {
             headers: {
-                Authorization: `Token ${localStorage.getItem("ifsolve_token")}`,
+                Authorization: `Token ${localStorage.getItem('ifsolve_token')}`,
             },
         }
     );
 }
 
 export function GetItemsPU(setItens, setListItens) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
     return api
-        .get("item/publico/", {
+        .get('item/publico/', {
             headers: {
                 Authorization: `Token ${token}`,
             },
@@ -164,8 +152,8 @@ export function GetItemsPU(setItens, setListItens) {
 }
 
 export function GetItems() {
-    const token = localStorage.getItem("ifsolve_token");
-    return api.get("item/publico/", {
+    const token = localStorage.getItem('ifsolve_token');
+    return api.get('item/publico/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -173,9 +161,9 @@ export function GetItems() {
 }
 
 export function GetAreas() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("area/", {
+    return api.get('area/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -183,7 +171,7 @@ export function GetAreas() {
 }
 
 export function GetItemByID(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`item/${id}/detalhe/`, {
         headers: {
@@ -193,7 +181,7 @@ export function GetItemByID(id) {
 }
 
 export function GetRespostaByItem(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`resposta/item/${id}/`, {
         headers: {
@@ -202,7 +190,7 @@ export function GetRespostaByItem(id) {
     });
 }
 export function GetAvaliacaoByID(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`avaliacao/${id}/detalhe/`, {
         headers: {
@@ -212,7 +200,7 @@ export function GetAvaliacaoByID(id) {
 }
 
 export function GetRespostasAlunoAvaliacao(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`avaliacao/${id}/aluno/respostas/`, {
         headers: {
@@ -222,9 +210,9 @@ export function GetRespostasAlunoAvaliacao(id) {
 }
 
 export function GetTags() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("tag/", {
+    return api.get('tag/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -233,11 +221,11 @@ export function GetTags() {
 
 export function AnswerItem(data) {
     // Pegua dados do usuario salvos no local storage
-    const user = JSON.parse(localStorage.getItem("ifsolve_user"));
+    const user = JSON.parse(localStorage.getItem('ifsolve_user'));
 
     // Envia dados da resposta para a api via POST
     return api.post(
-        "resposta/",
+        'resposta/',
         {
             resposta: data.resposta,
             nota_obtida: data.nota_obtida,
@@ -247,16 +235,16 @@ export function AnswerItem(data) {
         },
         {
             headers: {
-                Authorization: `Token ${localStorage.getItem("ifsolve_token")}`,
+                Authorization: `Token ${localStorage.getItem('ifsolve_token')}`,
             },
         }
     );
 }
 
 export function GetAvaliacoes() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("avaliacao/elaborador/listar/", {
+    return api.get('avaliacao/elaborador/listar/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -264,9 +252,9 @@ export function GetAvaliacoes() {
 }
 
 export function GetAvaliacoesAluno() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("avaliacao/aluno/listar/", {
+    return api.get('avaliacao/aluno/listar/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -274,11 +262,11 @@ export function GetAvaliacoesAluno() {
 }
 
 export function PostAvaliacao(avaliacao, itens, alunos) {
-    const token = localStorage.getItem("ifsolve_token");
-    const user = JSON.parse(localStorage.getItem("ifsolve_user"));
+    const token = localStorage.getItem('ifsolve_token');
+    const user = JSON.parse(localStorage.getItem('ifsolve_user'));
 
     return api.post(
-        "avaliacao/elaborador/criar/",
+        'avaliacao/elaborador/criar/',
         {
             itens,
             titulo: avaliacao.titulo,
@@ -299,9 +287,9 @@ export function PostAvaliacao(avaliacao, itens, alunos) {
 }
 
 export function GetAlunos() {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.get("aluno/todos/", {
+    return api.get('aluno/todos/', {
         headers: {
             Authorization: `Token ${token}`,
         },
@@ -309,7 +297,7 @@ export function GetAlunos() {
 }
 
 export function GetAlunoById(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`aluno/${id}/`, {
         headers: {
@@ -319,7 +307,7 @@ export function GetAlunoById(id) {
 }
 
 export function GetAvaliacaoDetails(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`avaliacao/${id}/detalhe/`, {
         headers: {
@@ -329,7 +317,7 @@ export function GetAvaliacaoDetails(id) {
 }
 
 export function GetAvaliacaoRespostasByAluno(avaliacaoId, alunoId) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`avaliacao/${avaliacaoId}/aluno/${alunoId}/respostas/`, {
         headers: {
@@ -339,7 +327,7 @@ export function GetAvaliacaoRespostasByAluno(avaliacaoId, alunoId) {
 }
 
 export function PatchResposta(id, nota) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.patch(
         `resposta/${id}/`,
@@ -355,7 +343,7 @@ export function PatchResposta(id, nota) {
 }
 
 export function GetAvaliacaoById(id) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
     return api.get(`avaliacao/${id}/`, {
         headers: {
@@ -365,9 +353,9 @@ export function GetAvaliacaoById(id) {
 }
 
 export function AnswerAvaliacao(respostas) {
-    const token = localStorage.getItem("ifsolve_token");
+    const token = localStorage.getItem('ifsolve_token');
 
-    return api.post("avaliacao/responder/", respostas, {
+    return api.post('avaliacao/responder/', respostas, {
         headers: {
             Authorization: `Token ${token}`,
         },

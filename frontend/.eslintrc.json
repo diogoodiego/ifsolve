@@ -3,38 +3,22 @@
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "prettier",
-        "plugin:react/jsx-runtime"
-    ],
+    "extends": ["plugin:react/recommended", "airbnb", "prettier", "plugin:react/jsx-runtime"],
     "overrides": [
         {
-            "files": [
-                "*.js",
-                "*.jsx"
-            ]
+            "files": ["*.js", "*.jsx"]
         }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
-        "react/jsx-filename-extension": [
-            0
-        ],
+        "react/jsx-filename-extension": [0],
         "jsx-a11y/label-has-associated-control": "off",
         "import/extensions": "off",
         "react/jsx-props-no-spreading": "off"
     },
-    "ignorePatterns": [
-        "**/*.png",
-        "**/*.svg",
-        "*.css"
-    ]
+    "ignorePatterns": ["**/*.png", "**/*.svg", "*.css"]
 }

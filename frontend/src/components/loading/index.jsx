@@ -1,4 +1,4 @@
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 export default function Loading() {
     return (
@@ -8,5 +8,5 @@ export default function Loading() {
             </div>
             <p className="text-lg text-dark-100 font-medium">Carregando...</p>
         </div>
-    )
+    );
 }
