@@ -30,4 +30,9 @@ jobs:
             cd ./frontend/
             cd ./src/
             npx prettier . --check
+      - name: Detect Duplicate Code
+        run: |
+            cd ./frontend/
+            cd ./src/
+            npx jscpd --format "javascript,typescript,jsx" src/
 
