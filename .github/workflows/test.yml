@@ -34,5 +34,5 @@ jobs:
         run: |
             cd ./frontend/
             cd ./src/
-            npx jscpd --format "javascript,typescript,jsx" src/
+            npx jscpd -p "src/**/*.js,ts,html"
 
