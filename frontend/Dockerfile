@@ -1,5 +1,5 @@
 # Base image
-FROM node:alpine
+FROM node:23.11.1-alpine3.21
 
 # Cria e define o diretório de trabalho
 WORKDIR /ifsolve_front
